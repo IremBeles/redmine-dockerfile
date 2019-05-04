@@ -6,7 +6,7 @@ services:
     volumes:
       - 'postgresql_data:/bitnami'
   redmine:
-    image: 'redmine2'
+    image: 'redmine3'
     ports:
       - '80:3000'
     environment:

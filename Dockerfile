@@ -6,7 +6,7 @@ RUN apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev -y
 RUN apt-get install postgresql-client libpq5 libpq-dev -y
 #MAGICK INSTALL REDMINE-AGILE CONF
 RUN apt-get install libmagick++-dev -y
-RUN sed -i "s/adapter: mysql2/adapter: postgresql/g" /opt/bitnami/redmine/conf/database.yml
+RUN sed -i "s/adapter: mysql2/adapter: postgresql/g" opt/bitnami/redmine/conf/database.yml
 
 #GIT CONFIGURATION
 RUN apt-get install -y git

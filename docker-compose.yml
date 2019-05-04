@@ -1,31 +1,22 @@
-{\rtf1\ansi\ansicpg1254\cocoartf1561\cocoasubrtf600
-{\fonttbl\f0\fnil\fcharset0 Consolas;}
-{\colortbl;\red255\green255\blue255;\red28\green51\blue69;\red250\green250\blue251;}
-{\*\expandedcolortbl;;\cssrgb\c14118\c26275\c34118;\cssrgb\c98431\c98431\c98824;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh17520\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+version: '2'
 
-\f0\fs23\fsmilli11900 \cf2 \cb3 \expnd0\expndtw0\kerning0
-version: '2'\
-\
-services:\
-  postgresql:\
-    image: 'bitnami/postgresql:latest'\
-    volumes:\
-      - 'postgresql_data:/bitnami'\
-  redmine:\
-    image: 'redmine1'\
-    ports:\
-      - '80:3000'\
-    environment:\
-      - REDMINE_DB_POSTGRES=postgresql\
-    volumes:\
-      - 'redmine_data:/bitnami'\
-    depends_on:\
-      - postgresql\
-volumes:\
-  postgresql_data:\
-    driver: local\
-  redmine_data:\
-    driver: local}
+services:
+  postgresql:
+    image: 'bitnami/postgresql:latest'
+    volumes:
+      - 'postgresql_data:/bitnami'
+  redmine:
+    image: 'redmine1'
+    ports:
+      - '80:3000'
+    environment:
+      - REDMINE_DB_POSTGRES=postgresql
+    volumes:
+      - 'redmine_data:/bitnami'
+    depends_on:
+      - postgresql
+volumes:
+  postgresql_data:
+    driver: local
+  redmine_data:
+    driver: local

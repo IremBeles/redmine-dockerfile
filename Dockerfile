@@ -11,9 +11,10 @@ RUN apt-get install libmagick++-dev -y
 #GIT CONFIGURATION
 RUN apt-get install -y git
 RUN git clone https://github.com/IremBeles/redmine-dockerfile.git
-RUN sudo cp redmine-dockerfile/redmine_agile/ /opt/bitnami/redmine/plugins/ -r
 
 #REDMINE-AGILE INSTALL
+#RUN sudo cp redmine-dockerfile/redmine_agile/ /opt/bitnami/redmine/plugins/ -r
+
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --no-deployment
 
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --deployment

@@ -12,7 +12,7 @@ RUN sed -i "s/adapter: mysql2/adapter: postgresql/g" /opt/bitnami/redmine/config
 RUN git clone https://github.com/IremBeles/redmine-dockerfile.git
 #REDMINE-AGILE INSTALL
 RUN sudo cp redmine-dockerfile/redmine_agile/ /opt/bitnami/redmine/plugins/ -r
-#RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --no-deployment
+RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --no-deployment
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --no-deployment
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --deployment
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle exec rake -f /opt/bitnami/redmine/Rakefile redmine:plugins RAILS_ENV=production

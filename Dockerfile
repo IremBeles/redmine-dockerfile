@@ -8,7 +8,7 @@ RUN apt-get install postgresql-client libpq5 libpq-dev -y
 RUN apt-get install libmagick++-dev -y
 RUN sed -i "s/adapter: mysql2/adapter: postgresql/g" /opt/bitnami/redmine/config/database.yml
 #GIT CONFIGURATION
-RUN apt-get install -y git
+#RUN apt-get install -y git
 RUN git clone https://github.com/IremBeles/redmine-dockerfile.git
 #REDMINE-AGILE INSTALL
 RUN sudo cp redmine-dockerfile/redmine_agile/ /opt/bitnami/redmine/plugins/ -r

@@ -1,7 +1,7 @@
 # This file is a part of Redmin Agile (redmine_agile) plugin,
 # Agile board plugin for redmine
 #
-# Copyright (C) 2011-2019 RedmineUP
+# Copyright (C) 2011-2018 RedmineUP
 # http://www.redmineup.com/
 #
 # redmine_agile is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with redmine_agile.  If not, see <http://www.gnu.org/licenses/>.
 
-
+require 'redmine_agile/patches/compatibility/application_controller_patch' if Rails::VERSION::MAJOR < 4
 
 require 'redmine_agile/hooks/views_layouts_hook'
 require 'redmine_agile/hooks/views_issues_hook'
@@ -25,22 +25,20 @@ require 'redmine_agile/hooks/views_versions_hook'
 require 'redmine_agile/hooks/controller_issue_hook'
 require 'redmine_agile/patches/issue_patch'
 
+require 'redmine_agile/patches/compatibility_patch'
+
 require 'redmine_agile/helpers/agile_helper'
 
 require 'redmine_agile/charts/agile_chart'
 require 'redmine_agile/charts/burndown_chart'
 require 'redmine_agile/charts/work_burndown_chart'
-require 'redmine_agile/charts/charts'
 
 module RedmineAgile
 
   ISSUES_PER_COLUMN = 10
   TIME_REPORTS_ITEMS = 1000
   BOARD_ITEMS = 500
-
-  ESTIMATE_HOURS        = 'hours'.freeze
-  ESTIMATE_STORY_POINTS = 'story_points'.freeze
-  ESTIMATE_UNITS        = [ESTIMATE_HOURS, ESTIMATE_STORY_POINTS].freeze
+  ESTIMATE_UNITS = ['hours', 'story_points']
 
   class << self
     def time_reports_items_limit
@@ -63,7 +61,7 @@ module RedmineAgile
     end
 
     def default_chart
-      Setting.plugin_redmine_agile['default_chart'] || Charts::BURNDOWN_CHART
+      Setting.plugin_redmine_agile['default_chart'] || 'issues_burndown'
     end
 
     def estimate_units

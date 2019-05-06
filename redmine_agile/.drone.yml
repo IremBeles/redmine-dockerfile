@@ -12,19 +12,19 @@ matrix:
     - RUBY_VER: ruby-2.2.6
       LICENSE: pro
       DB: mysql
-      REDMINE: redmine-3.4
+      REDMINE: redmine-3.3
     - RUBY_VER: ruby-2.2.6
       LICENSE: light
       DB: mysql
-      REDMINE: redmine-3.4
+      REDMINE: redmine-3.3
     - RUBY_VER: ruby-2.2.6
       LICENSE: pro
       DB: pg
-      REDMINE: redmine-3.4
+      REDMINE: redmine-3.3
     - RUBY_VER: ruby-2.2.6
       LICENSE: light
       DB: pg
-      REDMINE: redmine-3.4
+      REDMINE: redmine-3.3
     - RUBY_VER: ruby-2.2.6
       LICENSE: pro
       DB: mysql
@@ -32,15 +32,15 @@ matrix:
     - RUBY_VER: ruby-2.4.1
       DB: mysql
       LICENSE: light
-      REDMINE: redmine-4.0
+      REDMINE: redmine-3.4
     - RUBY_VER: ruby-2.4.1
       DB: pg
       LICENSE: pro
-      REDMINE: redmine-4.0
+      REDMINE: redmine-3.4
     - RUBY_VER: ruby-2.4.1
       DB: mysql
       LICENSE: pro
-      REDMINE: redmine-4.0
+      REDMINE: redmine-3.4
       PLUGINS: redmine_checklists+pro
       PLUGIN: redmine_agile
       COVERAGE_EXPORT: 1
@@ -70,5 +70,9 @@ matrix:
       REDMINE: redmine-trunk
     - RUBY_VER: ruby-2.4.1
       DB: pg
+      LICENSE: pro
+      REDMINE: redmine-trunk
+    - RUBY_VER: ruby-2.2.6
+      DB: mysql
       LICENSE: pro
       REDMINE: redmine-trunk

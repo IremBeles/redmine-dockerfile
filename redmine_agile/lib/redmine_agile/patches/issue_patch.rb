@@ -1,7 +1,7 @@
 # This file is a part of Redmin Agile (redmine_agile) plugin,
 # Agile board plugin for redmine
 #
-# Copyright (C) 2011-2019 RedmineUP
+# Copyright (C) 2011-2018 RedmineUP
 # http://www.redmineup.com/
 #
 # redmine_agile is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ module RedmineAgile
           has_one :agile_data, :dependent => :destroy
           delegate :position, :to => :agile_data, :allow_nil => true
           scope :sorted_by_rank, lambda { eager_load(:agile_data).
-                                          order(Arel.sql("COALESCE(#{AgileData.table_name}.position, 999999  )")) }
+                                          order("COALESCE(#{AgileData.table_name}.position, 999999)") }
           safe_attributes 'agile_data_attributes', :if => lambda { |issue, user| issue.new_record? || user.allowed_to?(:edit_issues, issue.project) && RedmineAgile.use_story_points? }
           accepts_nested_attributes_for :agile_data, :allow_destroy => true
 

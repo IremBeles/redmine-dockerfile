@@ -452,8 +452,8 @@ table.issues-board tbody td.over_wp_limit {background-color: #FFF6F6;}
 
 .agile-chart-container {
   margin: auto;
-  min-height: 400px;
-  max-width: 1200px;
+  height: 400px;
+  max-width: 800px;
 }
 
 .issue-card.filtered {
@@ -480,56 +480,6 @@ table.list.issues-board.sticky {
   table.list.issues-board.sticky { top: 64px; }
 
   html.agile-board-fullscreen #wrapper > div.flyout-menu.js-flyout-menu { z-index: 22; }
-}
-
-.planning-board {
-  display: flex;
-  overflow-x: auto;
-}
-
-.planning-board p {
-    margin: 0;
-}
-
-.planning-board .column-content {
-  width: 272px;
-  min-width: 272px;
-  margin: 0 4px 4px 4px;
-  background-color: #f6f7f8;
-  border: 1px solid #d7d7d7;
-}
-
-.planning-board .column-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 28px;
-  padding: 5px;
-  background-color: #eeeeee;
-  border-bottom: 1px solid #d7d7d7;
-}
-
-.planning-board .column-header .version-name {
-  color: #555;
-  font-size: 90%;
-  font-weight: bold;
-}
-
-.planning-board .column-issues {
-  padding-bottom: 30px;
-}
-
-.planning-board .closed-issue {
-  color: #999;
-  display: block;
-  white-space: inherit;
-  background-color: #ededed;
-  border-color: #d7d7d7;
-}
-
-.planning-board .closed-issue p.name a, .planning-board .closed-issue p.issue-id {
-  color: #999;
-  text-decoration: line-through;
 }
 
 html {

@@ -1,7 +1,7 @@
 # This file is a part of Redmin Agile (redmine_agile) plugin,
 # Agile board plugin for redmine
 #
-# Copyright (C) 2011-2019 RedmineUP
+# Copyright (C) 2011-2018 RedmineUP
 # http://www.redmineup.com/
 #
 # redmine_agile is free software: you can redistribute it and/or modify
@@ -232,7 +232,7 @@ class AgileQuery < Query
     add_available_filter "due_date", :type => :date
     add_available_filter "estimated_hours", :type => :float
     add_available_filter "done_ratio", :type => :integer
-    add_available_filter "parent_issue_id", :type => :relation, :values => all_projects_values
+    add_available_filter "parent_issue_id", :type => :relation
     add_available_filter "has_sub_issues", :type => :list,
       :values => [ l(:general_text_yes), l(:general_text_no)],
       :label => :label_agile_has_sub_issues
@@ -255,7 +255,7 @@ class AgileQuery < Query
     add_associations_custom_fields_filters :project, :author, :assigned_to, :fixed_version
 
     IssueRelation::TYPES.each do |relation_type, options|
-      add_available_filter relation_type, :type => :relation, :label => options[:name], :values => all_projects_values
+      add_available_filter relation_type, :type => :relation, :label => options[:name]
     end
 
     Tracker.disabled_core_fields(trackers).each {|field|
@@ -359,19 +359,16 @@ class AgileQuery < Query
   end
 
   def sql_for_parent_issue_id_field(field, operator, value, options={})
-    value = value.first.split(',') if value.is_a? Array
-    value = value.split(',') if value.is_a? String
+    value = value.first.split(",") if value.is_a? Array
+    value = value.split(",") if value.is_a? String
     sql = case operator
-          when '*', '!*', '=', '!'
-            sql_for_field(field, operator, value, queried_table_name, 'parent_id')
-          when '=p', '=!p', '!p'
-            op = (operator == '!p' ? 'NOT IN' : 'IN')
-            comp = (operator == '=!p' ? '<>' : '=')
-            "#{Issue.table_name}.parent_id #{op} (SELECT DISTINCT #{Issue.table_name}.id FROM #{Issue.table_name} WHERE #{Issue.table_name}.project_id #{comp} #{value.first.to_i})"
-          when '*o', '!o'
-            op = (operator == '!o' ? 'NOT IN' : 'IN')
-            "#{Issue.table_name}.parent_id #{op} (SELECT DISTINCT #{Issue.table_name}.id FROM #{Issue.table_name} WHERE #{Issue.table_name}.status_id IN (SELECT DISTINCT #{IssueStatus.table_name}.id FROM #{IssueStatus.table_name} WHERE is_closed=#{self.class.connection.quoted_false}))"
-          end
+      when "*", "!*", "=", "!"
+        sql_for_field(field, operator, value, queried_table_name, "parent_id")
+      when "=p", "=!p", "!p"
+        op = (operator == "!p" ? 'NOT IN' : 'IN')
+        comp = (operator == "=!p" ? '<>' : '=')
+        "#{Issue.table_name}.parent_id #{op} (SELECT DISTINCT #{Issue.table_name}.id FROM #{Issue.table_name} WHERE #{Issue.table_name}.project_id #{comp} #{value.first.to_i})"
+      end
     "(#{sql})"
   end
 
@@ -611,7 +608,7 @@ class AgileQuery < Query
     if values_for('fixed_version_id') == ['current_version'] && project
       version = current_version
       # substitute id for current version
-      version ? filters['fixed_version_id'][:values] = [version.id.to_s] : filters.delete('fixed_version_id')
+      filters['fixed_version_id'][:values] = [version.id.to_s] if version
     end
     clauses = super
     if version

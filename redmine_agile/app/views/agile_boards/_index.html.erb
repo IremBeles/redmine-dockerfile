@@ -1,9 +1,8 @@
 <div class="contextual">
-  <%= link_to l(:label_agile_charts), @project ? project_agile_charts_path(project_id: @project) : agile_charts_path, class: 'icon icon-stats' %>
-  <% if !@query.new_record? && @query.editable_by?(User.current) %>
-    <%= link_to l(:button_edit), edit_agile_query_path(@query), class: 'icon icon-edit' %>
-    <%= delete_link agile_query_path(@query) %>
-  <% end %>
+<% if !@query.new_record? && @query.editable_by?(User.current) %>
+  <%= link_to l(:button_edit), edit_agile_query_path(@query), :class => 'icon icon-edit' %>
+  <%= delete_link agile_query_path(@query) %>
+<% end %>
 </div>
 
 <% html_title(@query.new_record? ? l(:label_agile_board) : @query.name) %>

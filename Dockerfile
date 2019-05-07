@@ -1,4 +1,4 @@
-FROM bitnami/redmine:latest
+FROM bitnami/redmine:3.4.7-debian-9-r5
 RUN apt-get update
 #NOKOGIRI INSTALL REDMINE-AGILE CONF
 RUN apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev -y
@@ -13,7 +13,7 @@ RUN git clone https://github.com/IremBeles/redmine-dockerfile.git
 #REDMINE-AGILE INSTALL
 RUN sudo cp redmine-dockerfile/redmine_agile/ /opt/bitnami/redmine/plugins/ -r
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --no-deployment
-#RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --no-deployment
-#RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --deployment
+RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --no-deployment
+RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --deployment
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle exec rake -f /opt/bitnami/redmine/Rakefile redmine:plugins RAILS_ENV=production
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle exec rake -f /opt/bitnami/redmine/Rakefile redmine:plugins NAME=redmine_agile RAILS_ENV=production

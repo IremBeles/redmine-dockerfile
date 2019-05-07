@@ -1,4 +1,4 @@
-FROM bitnami/redmine:3.4.7-debian-9-r5
+FROM bitnami/redmine:3.4.7-debian-9-r2
 RUN apt-get update
 #NOKOGIRI INSTALL REDMINE-AGILE CONF
 RUN apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev -y

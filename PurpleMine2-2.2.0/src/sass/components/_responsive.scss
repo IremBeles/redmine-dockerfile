@@ -1,0 +1,265 @@
+// scss-lint:disable SelectorDepth
+.theme-Purplemine2 {
+  @media screen and (max-width: $redmine-responsive-max) {
+    .flyout-menu + div {
+      #header {
+        height: $responsive-header-height;
+        background-color: $header-bg;
+
+        .jump-box-arrow {
+          &::before {
+            line-height: $responsive-header-height;
+          }
+        }
+
+        #quick-search {
+          select {
+            top: 0;
+            height: $responsive-header-height;
+            box-shadow: none;
+          }
+        }
+      }
+
+      #main {
+        padding-top: $responsive-header-height;
+      }
+    }
+
+    #header {
+      #project-jump {
+        padding: 0 $responsive-header-height 0 0;
+
+        &.expanded {
+          .drdn-trigger {
+            &::before {
+              padding: 0;
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .drdn-trigger {
+          display: block;
+          height: $responsive-header-height;
+          padding: 0;
+          background-color: transparent;
+          box-shadow: none;
+          line-height: $responsive-header-height;
+
+          &::before {
+            @include fa-icon;
+            content: $fa-var-chevron-down;
+            position: relative;
+            top: -.1em;
+            width: $responsive-header-height * .75;
+            padding: 0;
+            transform: none;
+            font-size: .8em;
+            text-align: center;
+          }
+
+          &::after {
+            display: none;
+          }
+        }
+
+        .drdn-content {
+          top: $responsive-header-height;
+        }
+      }
+    }
+
+    .mobile-toggle-button {
+      width: $responsive-header-height;
+      height: $responsive-header-height;
+      line-height: $responsive-header-height;
+
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .flyout-menu {
+      background-color: $flyout-menu-bg;
+      color: $flyout-menu-text;
+
+      &__search {
+        height: $responsive-header-height;
+        padding: ($padding-side / 2);
+        line-height: normal;
+
+        input[type="text"] {
+          height: $responsive-header-height - $padding-side;
+          line-height: $responsive-header-height - $padding-side;
+        }
+      }
+
+      a {
+        &,
+        &:hover,
+        &:focus {
+          color: $flyout-menu-link;
+        }
+      }
+
+      h3 {
+        border-top: 1px solid $flyout-menu-header-border;
+        border-bottom: 1px solid $flyout-menu-header-border;
+        background-color: $flyout-menu-header-bg;
+        color: $flyout-menu-header-text;
+      }
+
+      #admin-menu {
+        a {
+          background-position: 8px center;
+
+          &,
+          &:hover,
+          &:focus {
+            &::before {
+              color: $flyout-menu-link;
+            }
+          }
+
+          &.selected {
+            background-color: $body-bg;
+            color: $text-color;
+
+            &::before {
+              color: $text-color;
+            }
+          }
+        }
+      }
+    }
+
+    #query_form_content {
+      fieldset {
+        margin-bottom: $line-height-computed;
+      }
+    }
+
+    .search-magnifier {
+      &--flyout {
+        line-height: normal;
+      }
+    }
+
+    .splitcontentleft {
+      margin-bottom: $line-height-computed;
+      padding-right: 0;
+      float: none;
+    }
+
+    .splitcontentright {
+      padding-left: 0;
+      float: none;
+    }
+
+    .attributes .splitcontentleft {
+      margin-bottom: 0;
+    }
+
+    .tabular {
+      input[type="checkbox"],
+      input[type="radio"],
+      input.date {
+        width: auto;
+        max-width: 95%;
+      }
+
+      label {
+        float: none;
+      }
+    }
+
+    .pagination {
+      .pages {
+        display: block;
+      }
+    }
+
+    p.buttons,
+    .other-formats > span,
+    #wiki_add_attachment > p,
+    #content > .contextual,
+    #content > .contextual > span,
+    #query_form > .contextual,
+    #query_form_with_buttons > .contextual {
+      margin-bottom: $line-height-computed - $padding-small-horizontal;
+      padding: 0;
+      float: none;
+      text-align: left;
+
+      a {
+        padding: $btn-padding-vertical $btn-padding-horizontal-small;
+        border: 1px solid $pagination-border;
+        border-radius: $border-radius-base;
+        background-color: $pagination-bg;
+        color: $pagination-color;
+        font-weight: $font-weight-normal;
+
+        &:hover,
+        &:focus {
+          border-color: $pagination-hover-border;
+          background-color: $pagination-hover-bg;
+          color: $pagination-hover-color;
+          text-decoration: none;
+        }
+
+        &.icon {
+          padding-left: 20px + $btn-padding-horizontal-small;
+          background-position: $btn-padding-horizontal-small 50%;
+        }
+      }
+
+      a,
+      input,
+      select,
+      label {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+
+      label {
+        display: inline-block;
+      }
+    }
+
+    // For Redmine 4.0+
+    #content > .contextual .drdn {
+      padding: 0;
+      border: 0;
+
+      .drdn-trigger {
+        padding: $btn-padding-vertical $btn-padding-horizontal;
+      }
+
+      .drdn-items {
+        a {
+          margin: 3px 0 0;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    // For Redmine 3.4+
+    #my-page {
+      #list-left {
+        width: 100%;
+        padding-right: 0;
+        float: none;
+      }
+
+      #list-right {
+        width: 100%;
+        padding-left: 0;
+        float: none;
+      }
+    }
+  }
+}

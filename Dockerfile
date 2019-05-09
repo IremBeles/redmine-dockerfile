@@ -17,7 +17,7 @@ RUN sudo cp redmine-dockerfile/redmine_checklists/ /opt/bitnami/redmine/plugins/
 #PurpleMine2 Theme INSTALL
 RUN sudo cp redmine-dockerfile/PurpleMine2-2.2.0/ /opt/bitnami/redmine/public/themes/ -r
 #SETTINGS CHANGE
-sed -i "32s/.*/  default: '0'/" /opt/bitnami/redmine/config/settings.yml
+RUN sed -i "32s/.*/  default: '0'/" /opt/bitnami/redmine/config/settings.yml
 #RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --no-deployment
 RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --no-deployment
 RUN BUNDLE_GEMFILE="/opt/bitnami/redmine/Gemfile" bundle install --without development test postgresql sqlite --deployment

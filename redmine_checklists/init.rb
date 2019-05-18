@@ -36,7 +36,7 @@ Redmine::Plugin.register :redmine_checklists do
   settings :default => {
     :save_log => true,
     :issue_done_ratio => true,
-	:block_issue_closing => true
+    :block_issue_closing => true
   }, :partial => 'settings/checklists/checklists'
 
   Redmine::AccessControl.map do |map|
